@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>setupProfile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-avatar>
+        <img [src]="this.url" />
+      </ion-avatar>
+      <ion-label>
+        <ion-input (change)="onFileChanged($event)" type="file"></ion-input>
+      </ion-label>
+      <br />
+      <ion-item>
+        <ion-label position="stacked">About you:</ion-label>
+        <br />
+        <ion-textarea
+          [(ngModel)]="aboutMe"
+          auto-grow
+          maxlength="140"
+        ></ion-textarea>
+        <ion-label>{{ lettersLeft }}</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-button (click)="createProfile()" shape="round"
+    >CREATE PROFILE</ion-button
+  >
+</ion-content>
+
+<!--[routerLink]="['/tabs']"-->

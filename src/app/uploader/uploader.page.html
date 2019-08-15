@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Create Post</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-textarea
+          [(ngModel)]="postText"
+          auto-grow
+          placeholder="What's up"
+        ></ion-textarea>
+        <ion-label></ion-label>
+      </ion-item>
+      <ion-input
+        #fileButton
+        (change)="onFileChanged($event)"
+        type="file"
+      ></ion-input>
+      <br />
+
+      <ion-img *ngIf="imageURL" [src]="this.imageURL"></ion-img>
+      <ion-item>
+        <ion-label>Post for:</ion-label>
+        <ion-select
+          [(ngModel)]="isPrivate"
+          interface="popover"
+          placeholder="Select One"
+        >
+          <ion-select-option value="true">followers</ion-select-option>
+          <ion-select-option value="false">public</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-button (click)="createPost()" shape="round">CREATE POST</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

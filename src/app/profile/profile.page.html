@@ -1,0 +1,146 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let item of user.profile">
+    <ion-card-header>
+      <ion-row>
+        <ion-col>
+          <ion-row>
+            <ion-col>
+              <ion-avatar class="profilePic img">
+                <img class="img" [src]="item.payload.doc.data().fileUrl" />
+
+                <ion-icon class="award" color="success" name="star"></ion-icon>
+              </ion-avatar>
+            </ion-col>
+            <ion-col>
+              <ion-label class="mainName">
+                {{ item.payload.doc.data().firstName }}
+                {{ item.payload.doc.data().lastName }}
+              </ion-label>
+              <ion-label> @{{ item.payload.doc.data().userName }} </ion-label>
+
+              <ion-label class="mainName">Donations</ion-label>
+              <ion-row>
+                <ion-label>
+                  Given: 
+                </ion-label>
+              </ion-row>
+              <ion-row>
+                <ion-label>
+                  Recieved: 
+                </ion-label>
+              </ion-row>
+              <ion-button
+                class="donation-button"
+                shape="round"
+                (click)="follow(item)"
+                size="small"
+                color="secondary"
+              >
+                <ion-label>
+                  $ {{ item.payload.doc.data().nickels }}
+                </ion-label>
+                <ion-icon slot="end" name="add-circle-outline"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="followStats">
+            <ion-col (click)="goFollowing()" class="followStats">
+              <ion-label>
+                {{ item.payload.doc.data().following.length }}
+              </ion-label>
+              <br />
+              <ion-label>
+                Following
+              </ion-label>
+            </ion-col>
+
+            <ion-col (click)="goFollowers()" class="followStats">
+              <ion-label>
+                {{ item.payload.doc.data().follower.length }}
+              </ion-label>
+              <br />
+              <ion-label>
+                Followers
+              </ion-label>
+            </ion-col>
+            <ion-col class="followStats">
+              <ion-label>
+                {{ item.payload.doc.data().numberPosts }}
+              </ion-label>
+              <br />
+              <ion-label>
+                Subscribers
+              </ion-label>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-card-header>
+
+    <ion-card-content class="aboutMe">
+      <ion-label>
+        About me:
+      </ion-label>
+      <br />
+      {{ item.payload.doc.data().aboutMe }}
+    </ion-card-content>
+  </ion-card>
+  <ion-toolbar>
+    <ion-row class="followStats">
+      <ion-col> <ion-label>Donations</ion-label> </ion-col>
+      <hr />
+      <ion-col> <ion-label>Posts</ion-label> </ion-col>
+      <hr />
+      <ion-col> <ion-label>favorites</ion-label> </ion-col>
+    </ion-row>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-row class="discoveryToolbar">
+      <ion-col> <ion-label>All</ion-label> </ion-col>
+      <ion-col> <ion-label>Photos/Videos</ion-label> </ion-col>
+      <ion-col> <ion-label>Stories</ion-label> </ion-col>
+    </ion-row>
+  </ion-toolbar>
+  <br />
+  <ion-label class="discoveryTitles">Photos/videos</ion-label>
+  <ion-slides>
+    <ion-slide *ngFor="let post of post.myProfilePosts">
+      <img class="photos" [src]="post.payload.doc.data().fileUrl" />
+    </ion-slide>
+  </ion-slides>
+  <br />
+  <ion-label class="discoveryTitles">Stories</ion-label>
+  <ion-card class="streamTiles">
+    <ion-card-content>
+      <label style="font-weight: bold">I am a good folk</label> <br />
+      <ion-label>
+        I love hanging out with my friendsI love hanging out with my friendsI
+        love hanging out with my friendsI love hanging out with my friendsI love
+        hanging out with my friends
+        <span
+          ><ion-label style="color: blue"> continue reading</ion-label></span
+        ></ion-label
+      >
+    </ion-card-content>
+  </ion-card>
+  <ion-card class="streamTiles">
+    <ion-card-content>
+      <label style="font-weight: bold">I am a good folk</label> <br />
+      <ion-label>
+        I love hanging out with my friendsI love hanging out with my friendsI
+        love hanging out with my friendsI love hanging out with my friendsI love
+        hanging out with my friends
+        <span
+          ><ion-label style="color: blue"> continue reading</ion-label></span
+        ></ion-label
+      >
+    </ion-card-content>
+  </ion-card>
+</ion-content>

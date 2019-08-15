@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button shape="round" expand="block">Continue with Facebook</ion-button>
+  <ion-button shape="round" expand="block">Continue with Google</ion-button>
+  <ion-label>or</ion-label>
+  <ion-label>Enter your username & password to login</ion-label>
+  <ion-list>
+    <ion-item>
+      <ion-input
+        [(ngModel)]="email"
+        type="email"
+        placeholder="Email Address"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input
+        [(ngModel)]="password"
+        type="password"
+        placeholder="Password"
+      ></ion-input>
+    </ion-item>
+    <ion-label>Forgot your password?</ion-label>
+  </ion-list>
+  <ion-button (click)="login()" shape="round" expand="block"
+    >SIGN IN</ion-button
+  >
+  <ion-label>Enter your username & password to login</ion-label>
+  <ion-button (click)="goSignup()" shape="round" expand="block"
+    >SIGN UP</ion-button
+  >
+</ion-content>

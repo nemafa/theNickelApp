@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>recommendations</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngFor="let item of user.recommendations">
+    <ion-avatar class="avatar" slot="start">
+      <img [src]="item.payload.doc.data().fileUrl" />
+    </ion-avatar>
+    <ion-label>
+      <h3>{{ item.payload.doc.data().userName }}</h3>
+      <p>{{ item.payload.doc.data().aboutMe }}</p>
+    </ion-label>
+    <ion-button (click)="follow(item)" size="small" color="secondary">
+      <ion-label>
+        follow
+      </ion-label>
+      <ion-icon slot="icon-only" name="person-add"></ion-icon
+    ></ion-button>
+    <ion-button size="small" color="secondary">
+      <ion-label>
+        120 subscribe
+      </ion-label>
+      <ion-icon slot="icon-only" name="star"></ion-icon
+    ></ion-button>
+  </ion-item>
+</ion-content>

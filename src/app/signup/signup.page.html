@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>SIGN UP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-label class="textStyles"
+    >let`s get started with some basic details
+  </ion-label>
+  <ion-list>
+    <ion-item>
+      <ion-input
+        class="inputStyles"
+        [(ngModel)]="firstName"
+        type="text"
+        placeholder="First Name"
+      ></ion-input>
+    </ion-item>
+    <ion-item class="inputStyles">
+      <ion-input
+        [(ngModel)]="lastName"
+        type="text"
+        placeholder="Last Name"
+      ></ion-input>
+    </ion-item>
+    <ion-item class="inputStyles">
+      <ion-input
+        [(ngModel)]="userName"
+        type="text"
+        placeholder="User Name"
+      ></ion-input>
+    </ion-item>
+    <ion-item class="inputStyles">
+      <ion-input
+        [(ngModel)]="email"
+        type="email"
+        placeholder="Email Address"
+      ></ion-input>
+    </ion-item>
+    <ion-item class="inputStyles">
+      <ion-input
+        [(ngModel)]="password"
+        type="password"
+        placeholder="Password"
+      ></ion-input>
+    </ion-item>
+    <ion-item class="inputStyles">
+      <ion-input
+        [(ngModel)]="cpassword"
+        type="password"
+        placeholder="Confirm Password"
+      ></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-button
+    class="buttonStyle"
+    (click)="signUp()"
+    shape="round"
+    expand="block"
+    >SIGN UP</ion-button
+  >
+  <ion-label class="textStyles">Already have an account?</ion-label>
+
+  <ion-button
+    class="buttonStyle"
+    shape="round"
+    expand="block"
+    (click)="goLogin()"
+    >SIGN IN</ion-button
+  >
+</ion-content>
+<ion-footer>
+  <ion-label
+    >By creating an account you agree to our Terms of Service and Privacy
+    Policy</ion-label
+  >
+</ion-footer>

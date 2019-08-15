@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons (click)="logout()" slot="secondary">
+      <ion-button color="light">
+        <ion-icon slot="icon-only" name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Feed
+    </ion-title>
+    <ion-buttons (click)="goMessages()" slot="primary">
+      <ion-button color="light">
+        <ion-icon slot="icon-only" name="mail"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar color="success">
+    <ion-buttons slot="secondary">
+      <ion-button color="dark">
+        <ion-icon slot="icon-only" name="logo-usd"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title color="dark">
+      $120
+    </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button color="dark">
+        <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let item of post.homePosts">
+    <ion-card-header>
+      <ion-row>
+        <ion-avatar>
+          <ion-img [src]="item.payload.doc.data().userPhoto"></ion-img>
+        </ion-avatar>
+        <ion-col>
+          <ion-label>{{ item.payload.doc.data().userName }}</ion-label>
+          <br />
+          <ion-label>{{ item.payload.doc.data().timeSent }}</ion-label>
+        </ion-col>
+        <ion-buttons>
+          <ion-button type="button" (click)="delete(item)" color="secondary">
+            <ion-icon slot="icon-only" name="more"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-row>
+    </ion-card-header>
+
+    <ion-img [src]="item.payload.doc.data().fileUrl"></ion-img>
+    <ion-card-content>{{ item.payload.doc.data().postText }} </ion-card-content>
+    <ion-row>
+      <ion-col>
+        <ion-buttons (click)="donate(item)">
+          <ion-button color="secondary">
+            <ion-icon slot="icon-only" name="logo-usd"></ion-icon>
+            <ion-label>{{ item.payload.doc.data().donations }}</ion-label>
+          </ion-button>
+        </ion-buttons>
+      </ion-col>
+      <ion-col>
+        <ion-buttons>
+          <ion-button *ngIf="postLiked == true" (click)="unlike(item)" color="success">
+            <ion-icon name="heart-empty"></ion-icon>
+            <ion-label>{{ item.payload.doc.data().likes.length }}</ion-label>
+          </ion-button>
+          <ion-button *ngIf="postLiked == false" (click)="like(item)" color="secondary">
+            <ion-icon name="heart-empty"></ion-icon>
+            <ion-label>{{ item.payload.doc.data().likes.length }}</ion-label>
+          </ion-button>
+        </ion-buttons>
+      </ion-col>
+      <ion-col>
+        <ion-buttons>
+          <ion-button color="secondary">
+            <ion-icon slot="icon-only" name="text"></ion-icon>
+            <ion-label></ion-label>
+          </ion-button>
+        </ion-buttons>
+      </ion-col>
+      <ion-col>
+        <ion-buttons>
+          <ion-button color="secondary">
+            <ion-icon slot="icon-only" name="share-alt"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>
